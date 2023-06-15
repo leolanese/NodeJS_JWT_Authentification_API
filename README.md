@@ -83,5 +83,8 @@ MongoDB is Connected successfully: ac-okc09tz-shard-00-01.ooedapl.mongodb.net
 
 ### Test POST (invalid register)
 
-![Postman API POSST invalid register](./shared/imgs/register-invalid.jpg)
+![Postman API POST invalid register](./shared/imgs/register-invalid.jpg)
 
+### Test POST (login success after valid register)
+
+![Postman API POST valid login](./shared/imgs/login-success.jpg)

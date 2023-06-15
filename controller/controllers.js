@@ -1,13 +1,13 @@
 import asyncHandler from 'express-async-handler';
-import generateToken from '../shared/generateToken.js';
+import generateJWTToken from '../shared/generateJWTToken.js';
 import UserModel from '../model/models.js'
 
 const registerUser = asyncHandler( async (req, res) => {
     const { name, email, password } = req.body;
 
-    const userExist = await UserModel.findOne({email})
+    const userModel = await UserModel.findOne({email})
 
-    if(userExist){
+    if(userModel){
         res.status(400).json({
             success: false,
             message: 'User already exists'
@@ -19,7 +19,7 @@ const registerUser = asyncHandler( async (req, res) => {
                 success: true,
                 message: 'User has created',
                 user: user,
-                token: generateToken(user._id)
+                token: generateJWTToken(user._id)
             })
         }else{
             res.status(400).json({
@@ -34,14 +34,14 @@ const registerUser = asyncHandler( async (req, res) => {
 const loginUser = asyncHandler( async (req, res) => {
     const { email, password } = req.body;
 
-    const userExist = await UserModel.findOne({email})
+    const userModel = await UserModel.findOne({email})
 
-    if(userExist && await userExist.matchPassword(password)){
+    if(userModel && await userModel.matchPassword(password)){
         res.status(200).json({
             success: true,
             message: 'User logged in successfully',
             email: email,
-            token: generateToken(userExist._id)
+            token: generateJWTToken(userModel._id)
         })
     } else{
         res.status(400).json({
@@ -54,7 +54,6 @@ const loginUser = asyncHandler( async (req, res) => {
 const dashboard = asyncHandler(async (req, res) => {
     res.send('Dashboard')
 })
-
 
 export {
     registerUser,
