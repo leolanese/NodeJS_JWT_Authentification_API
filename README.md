@@ -19,17 +19,17 @@ npm i -D nodemon
 
 ## Setup environment
 
-create a new file env and .gitignore
+Let's create a new file `.env` and `.gitignore`
 
 ```js
-// env
+// .env
 PORT =5050
 MODE = development
 ```
 
 ```js
 // .gitignore
-env
+.env
 **/node_modules
 ```
 
