@@ -32,13 +32,9 @@ app.use('/api/', userRoutes)
 const PORT = process.env.PORT || 5050;
 
 // Starting the express server and listening for connections on the specified port.
-app.listen(PORT, (err) => {
-    if (err) {
-        console.error(`Failed to start server: ${err}`);
-    } else {
-        console.log(`Server running on: ${PORT}`);
-    }
-});
+app.listen(PORT, (err) =>  
+    (err) ? console.error(`Failed to start server: ${err}`) :  console.log(`Server running on: ${PORT}`)
+);
 
 
 // Route for the root ('/') of the application. When this route is hit, it sends back a message.

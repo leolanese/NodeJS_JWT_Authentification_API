@@ -7,7 +7,7 @@ const registerUser = asyncHandler(async (req, res) => {
     const { name, email, password } = req.body;
     const existingUser = await UserModel.findOne({ email });
 
-    if (existingUser) {
+    if (!!existingUser) {
         res.status(400).json({
             success: false,
             message: 'User already exists'
@@ -40,7 +40,7 @@ const loginUser = asyncHandler(async (req, res) => {
     const { email, password } = req.body;
     const userModel = await UserModel.findOne({ email });
 
-    if (userModel && await userModel.matchPassword(password)) {
+    if (!!userModel && await userModel.matchPassword(password)) {
         res.status(200).json({
             success: true,
             message: 'User logged in successfully',
@@ -63,7 +63,7 @@ const loginUser = asyncHandler(async (req, res) => {
 const account = asyncHandler(async (req, res) => {
     const user = await UserModel.findById(req.user.id);
 
-    if (user) {
+    if (!!user) {
         res.json({
             _id: user._id,
             name: user.name,
