@@ -91,4 +91,6 @@ MongoDB is Connected successfully: ac-okc09tz-shard-00-01.ooedapl.mongodb.net
 
 ### Test GET (login into private router successfully after register)
 
+> TIP: We need to add Headers: `Key`: `Authorization` & `Value`: `<token-value-here>`
+
 ![Postman API GET valid](./shared/imgs/account.jpg)
