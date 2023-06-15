@@ -33,6 +33,8 @@ env
 **/node_modules
 ```
 
+---
+
 ## Update type in package.json
 
 > "type": "module" in your package.json file, which instructs Node.js to treat .js files as ES Modules
@@ -43,6 +45,7 @@ env
 ...
   "type": "module",
 ...
+```
 
 ---
 
