@@ -66,3 +66,12 @@ MongoDB is Connected successfully: ac-okc09tz-shard-00-01.ooedapl.mongodb.net
 ```
 
 ![MongoDb Cluster](./shared/imgs/mongodb-atlas.jpg)
+
+---
+
+## Testing API Requests/Responses
+
+### Test POST (invalid)
+
+![PostMan API POST testing](./shared/imgs/invalid.jpg)
+
