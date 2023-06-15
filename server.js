@@ -5,7 +5,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import morgan from 'morgan';
 import { connectDB } from './config/db.js';
-// import userRoutes from './routes/userRoutes.js';
+import userRoutes from './route/routes.js';
 
 // Calling dotenv's config method to load environment variables from a .env file into process.env.
 dotenv.config();
@@ -26,9 +26,9 @@ if(process.env.MODE === 'development'){
 }
 
 // Setting up the userRoutes to be used with the path '/api'.
-// app.use('/api', userRoutes)
+app.use('/api', userRoutes)
 
-// Getting the port from environment variables or defaulting to 5000 if it doesn't exist.
+// Getting the port from environment variables or defaulting to 5050 if it doesn't exist.
 const PORT = process.env.PORT || 5050;
 
 // Starting the express server and listening for connections on the specified port.

@@ -1,7 +1,6 @@
 import asyncHandler from 'express-async-handler';
 import generateToken from '../shared/generateToken.js';
-import User from '../model/userModel.js'
-
+import User from '../model/models.js'
 
 const registerUser = asyncHandler( async (req, res) => {
     const { name, email, password } = req.body;
@@ -15,6 +14,7 @@ const registerUser = asyncHandler( async (req, res) => {
         })
     } else{
         const user = await User.create({ name, email, password})
+
         if(user){
             res.status(201).json({
                 success: true,
@@ -22,7 +22,7 @@ const registerUser = asyncHandler( async (req, res) => {
                 user: user,
                 token: generateToken(user._id)
             })
-        }else{
+        } else {
             res.status(400).json({
                 success: false,
                 message: 'Something went wrong'
@@ -32,7 +32,6 @@ const registerUser = asyncHandler( async (req, res) => {
 })
 
 
-// @desc Login User
 const loginUser = asyncHandler( async (req, res) => {
     const { email, password } = req.body;
 
@@ -56,7 +55,6 @@ const loginUser = asyncHandler( async (req, res) => {
 const dashboard = asyncHandler(async (req, res) => {
     res.send('Dashboard')
 })
-
 
 export {
     registerUser,

@@ -1,7 +1,6 @@
 import jwt from 'jsonwebtoken';
 import asyncHandler from 'express-async-handler'
-
-import User from '../model/userModel.js'
+import User from '../model/models.js'
 
 const protect = asyncHandler( async(req, res, next) => {
     if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')){
@@ -13,7 +12,7 @@ const protect = asyncHandler( async(req, res, next) => {
             next();
         } catch (error) {
             console.log(error);
-            res.status('500').json({sucess:false, message: 'Something went wrong!!'})
+            res.status('500').json({sucess:false, message: 'There is a problem in authorisation'})
         }
     } else {
         res.status('400').json({sucess:false, message: 'Not Authorized'})
