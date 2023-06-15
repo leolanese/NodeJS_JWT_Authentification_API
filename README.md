@@ -48,16 +48,18 @@ MODE = development
 
 ---
 
-## Running server
 
-```js
-npm run dev
 
 ---
 
 ## Connecting to the MongoDb server Cluster
 
 We need Node.js server to rung successfully on port 5050 and it also connected to MongoDB successfully
+
+## Running server
+
+```js
+npm run dev
 
 ...
 [nodemon] starting `node server.js`
@@ -79,4 +81,7 @@ MongoDB is Connected successfully: ac-okc09tz-shard-00-01.ooedapl.mongodb.net
 
 ![Postman API POST valid register](./shared/imgs/register.jpg)
 
-### 
+### Test POST (invalid register)
+
+![Postman API POSST invalid register](./shared/imgs/register-invalid.jpg)
+
