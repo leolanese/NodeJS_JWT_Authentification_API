@@ -51,12 +51,12 @@ const loginUser = asyncHandler( async (req, res) => {
     }
 });
 
-const dashboard = asyncHandler(async (req, res) => {
-    res.send('Dashboard')
+const account = asyncHandler(async (req, res) => {
+    res.send('Private Account Section - Registered Users Only')
 })
 
 export {
     registerUser,
     loginUser,
-    dashboard
+    account
 }

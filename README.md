@@ -88,3 +88,7 @@ MongoDB is Connected successfully: ac-okc09tz-shard-00-01.ooedapl.mongodb.net
 ### Test POST (login success after valid register)
 
 ![Postman API POST valid login](./shared/imgs/login-success.jpg)
+
+### Test GET (login into private router successfully after register)
+
+![Postman API GET valid](./shared/imgs/account.jpg)
