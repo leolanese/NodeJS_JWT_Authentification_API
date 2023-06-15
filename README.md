@@ -57,6 +57,8 @@ npm run dev
 
 ## Connecting to the MongoDb server Cluster
 
+We need Node.js server to rung successfully on port 5050 and it also connected to MongoDB successfully
+
 ...
 [nodemon] starting `node server.js`
 Server running on: 5050

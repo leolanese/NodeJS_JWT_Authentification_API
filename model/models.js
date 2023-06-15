@@ -1,22 +1,37 @@
-import jwt from 'jsonwebtoken';
-import asyncHandler from 'express-async-handler'
-import User from '../model/models.js'
+import mongoose from 'mongoose';
+import bcrypt from 'bcryptjs'
 
-const protect = asyncHandler( async(req, res, next) => {
-    if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')){
-        try {
-            let token = req.headers.authorization.split(' ')[1];
-            console.log(token);
-            const decoded = jwt.verify(token, process.env.JWT_SECRET);
-            req.user = await User.findById(decoded.id).select('-password')
-            next();
-        } catch (error) {
-            console.log(error);
-            res.status('500').json({sucess:false, message: 'There is a problem in authorisation'})
-        }
-    } else {
-        res.status('400').json({sucess:false, message: 'Not Authorized'})
+const userSchema = mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    email: {
+        type: String,
+        required: true
+    },
+    password: {
+        type: String,
+        required: true
     }
+},
+{
+    timestamp: true
+}
+);
+
+userSchema.methods.matchPassword = async function (enterendPassword) {
+    return await bcrypt.compare(enterendPassword, this.password);
+}
+
+userSchema.pre('save', async function(next){
+    if(!this.isModified('password')){
+        next();
+    }
+    const salt = await bcrypt.genSalt(10);
+    this.password = await bcrypt.hash(this.password, salt);
 })
 
-export default protect
+const Model = mongoose.model('users', userSchema);
+
+export default Model;

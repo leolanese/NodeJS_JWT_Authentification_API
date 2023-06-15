@@ -9,3 +9,4 @@ router.route('/login').post(loginUser);
 router.route('/dashboard').get(protect, dashboard)
 
 export default router;
+
