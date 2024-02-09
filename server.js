@@ -1,4 +1,4 @@
-// change package.jso:n "type": "module",
+// change package.json "type": "module",
 // to use imports
 
 import express from 'express';
